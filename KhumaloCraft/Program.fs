@@ -1,4 +1,4 @@
-namespace PractiseWeb
+namespace KhumaloCraft
 
 #nowarn "20"
 

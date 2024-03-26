@@ -1,4 +1,4 @@
-﻿namespace PractiseWeb.Controllers
+﻿namespace KhumaloCraft.Controllers
 
 open System
 open System.Collections.Generic
@@ -9,7 +9,7 @@ open System.Diagnostics
 open Microsoft.AspNetCore.Mvc
 open Microsoft.Extensions.Logging
 
-open PractiseWeb.Models
+open KhumaloCraft.Models
 
 type HomeController (logger : ILogger<HomeController>) =
     inherit Controller()

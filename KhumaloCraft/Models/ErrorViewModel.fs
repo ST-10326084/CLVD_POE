@@ -1,4 +1,4 @@
-namespace PractiseWeb.Models
+namespace KhumaloCraft.Models
 
 open System
 
