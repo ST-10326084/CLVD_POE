@@ -11,7 +11,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="views\home\styles.css" />
+    <Content Include="/css/site.css" />
   </ItemGroup>
 
   <ItemGroup>
