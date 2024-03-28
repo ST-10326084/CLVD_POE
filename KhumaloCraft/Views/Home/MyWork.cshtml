@@ -1,21 +1,95 @@
-@{
-    ViewData["Title"] = "My Work";
-}
-<h1>@ViewData["Title"]</h1>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Work</title>
-    <link rel="stylesheet" href="/css/site.css">
+    <link rel="stylesheet" href="/css/style.css"> <!-- Link to your custom CSS file -->
+    <style>
+        /* Embedded CSS for quick styling */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        p {
+            text-align: center;
+            color: #666;
+        }
+
+        .work-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+            .work-item img {
+                width: 150px;
+                height: auto;
+                margin-right: 20px;
+            }
+
+        .work-item-details {
+            flex: 1;
+        }
+
+        .price {
+            color: #007bff;
+            font-weight: bold;
+            cursor: pointer;
+            text-decoration: underline;
+        }
+
+        .description {
+            color: #333;
+        }
+    </style>
 </head>
 <body>
     <div class="container">
+        <h1>My Work</h1>
+        <p>This is where the 'art' is stored.</p>
 
-        <p>This is the My Work page </p>
+        <div class="work-item">
+            <img src="/images/pottery.jpg" alt="Pottery Pot">
+            <div class="work-item-details">
+                <p class="price"><a href="product1" >Price: R900</a></p>
+                <p class="description">This blue pot was handcrafted in southern Africa by tribes of the Anglos.</p>
+            </div>
+        </div>
 
+        <div class="work-item">
+            <img src="/images/wood.jpg" alt="Wooden Sculpture">
+            <div class="work-item-details">
+                <p class="price"><a href="product2" >Price: R1600</a></p>
+                <p class="description">This wooden sculpture represents the essence of nature, carved by skilled artisans.</p>
+            </div>
+        </div>
+
+        <div class="work-item">
+            <img src="/images/furtniture.jpg" alt="Table">
+            <div class="work-item-details">
+                <p class="price"><a href="product3" >Price: R3500</a></p>
+                <p class="description">This table was hand carved, oiled and perfeclty designed by an artisan with a full for useful art.</p>
+            </div>
+        </div>
+        <!-- change website colours to be african themed, green, brown etc / not modern -->
     </div>
 </body>
 </html>

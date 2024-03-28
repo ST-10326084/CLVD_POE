@@ -25,6 +25,15 @@ type HomeController (logger : ILogger<HomeController>) =
 
     member this.MyWork () =
         this.View()
+        
+    member this.product1 () =
+        this.View()
+
+    member this.product2 () =
+        this.View()
+
+    member this.product3 () =
+        this.View()
 
     [<ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)>]
     member this.Error () =
