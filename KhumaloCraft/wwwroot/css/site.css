@@ -177,14 +177,14 @@ nav {
     .home h1 {
         text-align: center;
         margin-bottom: 20px;
-        color: #007f24; /* Change color to match your design */
+        color: #007f24; 
     }
 
     .home p {
         text-align: justify;
         line-height: 1.6;
         margin-bottom: 20px;
-        color: #4a4a4a; /* Change color to match your design */
+        color: #4a4a4a; 
     }
 
     .home nav {
@@ -195,13 +195,13 @@ nav {
         .home nav a {
             display: inline-block;
             margin: 0 10px;
-            color: #007f24; /* Change color to match your design */
+            color: #007f24; 
             text-decoration: none;
             font-size: 18px;
         }
 
             .home nav a:hover {
-                color: #005d1a; /* Change color to match your design */
+                color: #005d1a; 
             }
 
 .product {
@@ -216,19 +216,19 @@ nav {
     .product h1 {
         text-align: center;
         margin-bottom: 20px;
-        color: #007f24; /* Change color to match your design */
+        color: #007f24; 
     }
 
     .product p {
         text-align: justify;
         line-height: 1.6;
         margin-bottom: 20px;
-        color: #4a4a4a; /* Change color to match your design */
+        color: #4a4a4a; 
     }
 
     .product .price {
         font-weight: bold;
-        color: #00a82d; /* Change color to match your design */
+        color: #00a82d;
     }
 
     .product .details {
@@ -247,11 +247,11 @@ nav {
     .about h1 {
         text-align: center;
         margin-bottom: 20px;
-        color: #007f24; /* Change color to match your design */
+        color: #007f24; 
     }
 
     .about h2 {
-        color: #000; /* Change color to match your design */
+        color: #000;
         margin-bottom: 10px;
     }
 
@@ -259,7 +259,7 @@ nav {
         text-align: justify;
         line-height: 1.6;
         margin-bottom: 20px;
-        color: #4a4a4a; /* Change color to match your design */
+        color: #4a4a4a; 
     }
 
     .about img {
