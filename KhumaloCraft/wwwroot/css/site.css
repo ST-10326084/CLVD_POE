@@ -1,72 +1,13 @@
-﻿/* Please see documentation at https://learn.microsoft.com/aspnet/core/client-side/bundling-and-minification
-for details on configuring this project to bundle and minify static web assets. */
+﻿/* site.css */
 
-a.navbar-brand {
-  white-space: normal;
-  text-align: center;
-  word-break: break-all;
-}
-
-a {
-  color: #0077cc;
-}
-
-.btn-primary {
-  color: #fff;
-  background-color: #1b6ec2;
-  border-color: #1861ac;
-}
-
-.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
-  color: #fff;
-  background-color: #1b6ec2;
-  border-color: #1861ac;
-}
-
-html {
-  font-size: 14px;
-}
-@media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
-}
-
-.border-top {
-  border-top: 1px solid #e5e5e5;
-}
-.border-bottom {
-  border-bottom: 1px solid #e5e5e5;
-}
-
-.box-shadow {
-  box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
-}
-
-button.accept-policy {
-  font-size: 1rem;
-  line-height: inherit;
-}
-
-html {
-  position: relative;
-  min-height: 100%;
-}
-
-body {
-    margin-bottom: 60px;
-    background-image: url('/images/pattern.jpg'); 
-    background-size: cover; 
-    background-repeat: no-repeat; 
-}
-
-
-
+/* General Styling */
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 0;
     padding: 0;
     background-color: #ecd9c6;
+    color: #4a4a4a;
+    background-image: url(pattern.jpg);
 }
 
 .container {
@@ -74,45 +15,257 @@ body {
     margin: 0 auto;
     padding: 20px;
     background-color: #fff;
-    border-radius: 20px;
+    border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    
 }
 
-h1 {
+h1, h2 {
     text-align: center;
     color: #000000;
-}
-
-p {
-    text-align: center;
-    color: #6d6d6d; 
-}
-
-.work-item {
-    display: flex;
-    align-items: center;
     margin-bottom: 20px;
 }
 
-    .work-item img {
-        width: 150px;
-        height: auto;
-        margin-right: 20px;
-        border-radius: 8px; 
+p {
+    text-align: justify;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+    margin: 0 auto;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+nav {
+    text-align: center;
+    margin-top: 20px;
+}
+
+    nav a {
+        display: inline-block;
+        margin: 0 10px;
+        color: #00a82d;
+        text-decoration: none;
+        transition: color 0.3s ease;
+        font-size: 18px;
     }
 
-.work-item-details {
-    flex: 2;
+        nav a:hover {
+            color: #007f24;
+        }
+
+/* Specific Section Styling */
+
+.contact {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 30px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-.price {
-    color: #00a82d; 
-    font-weight: bold;
-    cursor: pointer;
-    text-decoration: underline;
+    .contact h1 {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    .contact form {
+        display: grid;
+        grid-gap: 20px;
+    }
+
+    .contact label {
+        font-weight: bold;
+    }
+
+    .contact input[type="text"],
+    .contact input[type="email"],
+    .contact textarea {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        box-sizing: border-box;
+    }
+
+    .contact textarea {
+        resize: vertical;
+    }
+
+    .contact button[type="submit"] {
+        width: 100%;
+        padding: 10px;
+        background-color: #007f24;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+        .contact button[type="submit"]:hover {
+            background-color: #005d1a;
+        }
+
+.work {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 30px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-.description {
-    color: #4a4a4a; 
+    .work h1 {
+        text-align: center;
+        margin-bottom: 20px;
+    }
 
+    .work .work-item {
+        display: flex;
+        align-items: center;
+        border-bottom: 1px solid #ccc;
+        padding-bottom: 20px;
+        margin-bottom: 20px;
+    }
+
+        .work .work-item:last-child {
+            border-bottom: none;
+        }
+
+        .work .work-item img {
+            width: 150px;
+            height: auto;
+            margin-right: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+    .work .work-item-details {
+        flex: 1;
+    }
+
+    .work .price {
+        color: #00a82d;
+        font-weight: bold;
+        cursor: pointer;
+        text-decoration: underline;
+    }
+
+    .work .description {
+        color: #4a4a4a;
+        margin-top: 5px;
+    }
+
+    .work .work-item:last-child {
+        margin-bottom: 0;
+    }
+
+.home {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 30px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+    .home h1 {
+        text-align: center;
+        margin-bottom: 20px;
+        color: #007f24; /* Change color to match your design */
+    }
+
+    .home p {
+        text-align: justify;
+        line-height: 1.6;
+        margin-bottom: 20px;
+        color: #4a4a4a; /* Change color to match your design */
+    }
+
+    .home nav {
+        text-align: center;
+        margin-top: 20px;
+    }
+
+        .home nav a {
+            display: inline-block;
+            margin: 0 10px;
+            color: #007f24; /* Change color to match your design */
+            text-decoration: none;
+            font-size: 18px;
+        }
+
+            .home nav a:hover {
+                color: #005d1a; /* Change color to match your design */
+            }
+
+.product {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 30px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+    .product h1 {
+        text-align: center;
+        margin-bottom: 20px;
+        color: #007f24; /* Change color to match your design */
+    }
+
+    .product p {
+        text-align: justify;
+        line-height: 1.6;
+        margin-bottom: 20px;
+        color: #4a4a4a; /* Change color to match your design */
+    }
+
+    .product .price {
+        font-weight: bold;
+        color: #00a82d; /* Change color to match your design */
+    }
+
+    .product .details {
+        margin-top: 20px;
+    }
+
+.about {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 30px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+    .about h1 {
+        text-align: center;
+        margin-bottom: 20px;
+        color: #007f24; /* Change color to match your design */
+    }
+
+    .about h2 {
+        color: #000; /* Change color to match your design */
+        margin-bottom: 10px;
+    }
+
+    .about p {
+        text-align: justify;
+        line-height: 1.6;
+        margin-bottom: 20px;
+        color: #4a4a4a; /* Change color to match your design */
+    }
+
+    .about img {
+        display: block;
+        margin: 0 auto;
+        max-width: 100%;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }

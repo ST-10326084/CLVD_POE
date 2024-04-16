@@ -11,10 +11,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="/css/site.css" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="8.0.2" />
   </ItemGroup>
 
