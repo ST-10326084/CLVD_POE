@@ -5,6 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Include="models\LoginViewModel.fs" />
     <Compile Include="Models/ErrorViewModel.fs" />
     <Compile Include="Controllers/HomeController.fs" />
     <Compile Include="Program.fs" />
