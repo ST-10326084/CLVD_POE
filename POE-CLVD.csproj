@@ -5,6 +5,7 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <RootNamespace>POE_CLVD</RootNamespace>
+    <UserSecretsId>179a7d83-d76e-437a-bdb0-48027df81072</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>

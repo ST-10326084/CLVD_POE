@@ -1,29 +1,27 @@
-﻿using KhumaloCraft.Models;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
+using KhumaloCraft.Models;
+using System.Threading.Tasks;
 
-
-namespace KhumaloCraft.Controllers
+public class ContactController : Controller
 {
+    private readonly MyDbContext _context;
 
-    public class ContactController : Controller
+    public ContactController(MyDbContext context)
     {
-        private readonly MyDbContext _context;
+        _context = context;
+    }
 
-        public ContactController(MyDbContext context)
+    [HttpPost]
+    public async Task<IActionResult> SubmitContact([FromForm] ContactMessage message)
+    {
+        if (!ModelState.IsValid) // Validate the model
         {
-            _context = context;
+            return BadRequest("Invalid form submission.");
         }
 
-        [HttpPost]
-        public IActionResult SubmitContactMessage(ContactMessage message)
-        {
-            if (ModelState.IsValid)
-            {
-                _context.ContactMessages.Add(message);
-                _context.SaveChanges();
-                return Ok("Message submitted successfully!");
-            }
-            return BadRequest("Failed to submit message.");
-        }
+        _context.ContactMessages.Add(message); // Add to the DbContext
+        await _context.SaveChangesAsync(); // Save the data to the database
+
+        return Ok("Your message has been submitted successfully."); // Return a success message
     }
 }
