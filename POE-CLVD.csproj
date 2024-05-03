@@ -7,9 +7,5 @@
     <RootNamespace>POE_CLVD</RootNamespace>
   </PropertyGroup>
 
-	<ItemGroup>
-		<Compile Include="Controllers/HomeController.cs" />
-		<Compile Include="Program.cs" />
-	</ItemGroup>
 
 </Project>
