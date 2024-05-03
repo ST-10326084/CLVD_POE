@@ -5,6 +5,8 @@
   </PropertyGroup>
 
   <ItemGroup>
+	<Compile Include="Entities\EntityClass.fs" />
+    <Compile Include="Data\DbContext.fs" />
     <None Include="models\LoginViewModel.fs" />
     <Compile Include="Models/ErrorViewModel.fs" />
     <Compile Include="Controllers/HomeController.fs" />
@@ -13,6 +15,7 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="8.0.2" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.4" />
   </ItemGroup>
 
 </Project>

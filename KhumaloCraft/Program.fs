@@ -1,51 +1,54 @@
 namespace KhumaloCraft
 
-#nowarn "20"
-
 open System
-open System.Collections.Generic
-open System.IO
-open System.Linq
-open System.Threading.Tasks
-open Microsoft.AspNetCore
 open Microsoft.AspNetCore.Builder
 open Microsoft.AspNetCore.Hosting
-open Microsoft.AspNetCore.HttpsPolicy
 open Microsoft.Extensions.Configuration
 open Microsoft.Extensions.DependencyInjection
 open Microsoft.Extensions.Hosting
 open Microsoft.Extensions.Logging
+open Microsoft.EntityFrameworkCore 
+open KhumaloCraft.Entities
+open KhumaloCraft.Data
 
 module Program =
-    let exitCode = 0
-
     [<EntryPoint>]
     let main args =
+        // Create a new web application builder
         let builder = WebApplication.CreateBuilder(args)
 
-        builder
-            .Services
-            .AddControllersWithViews()
-            .AddRazorRuntimeCompilation()
+        // Load configuration from appsettings.json and environment variables
+        builder.Configuration.AddJsonFile("appsettings.json", optional = false, reloadOnChange = true)
+                             .AddEnvironmentVariables()
 
-        builder.Services.AddRazorPages()
+        // Retrieve the connection string from the configuration
+        let connectionString = builder.Configuration.GetConnectionString("DefaultConnection")
 
+        // Configure database context with the connection string
+        builder.Services.AddDbContext<MyDbContext>(fun options ->
+            options.UseSqlServer(connectionString)
+        ) // fs0041
+
+        // Add other services and configurations here
+        builder.Services.AddControllersWithViews() // For MVC/Razor Pages
+
+        // Build the application
         let app = builder.Build()
 
-        if not (builder.Environment.IsDevelopment()) then
+        // Middleware and routing configuration
+        if not app.Environment.IsDevelopment() then
             app.UseExceptionHandler("/Home/Error")
-            app.UseHsts() |> ignore // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
+            app.UseHsts()
+            // errors here aswell
 
         app.UseHttpsRedirection()
-
         app.UseStaticFiles()
+
         app.UseRouting()
         app.UseAuthorization()
 
-        app.MapControllerRoute(name = "default",pattern = "{controller=Home}/{action=Index}/{id?}")
-
-        app.MapRazorPages()
+        app.MapDefaultControllerRoute() // Default MVC route
 
         app.Run()
 
-        exitCode
+        0 // Exit code
