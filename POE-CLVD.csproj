@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <RootNamespace>POE_CLVD</RootNamespace>
+  </PropertyGroup>
+
+	<ItemGroup>
+		<Compile Include="Controllers/HomeController.cs" />
+		<Compile Include="Program.cs" />
+	</ItemGroup>
+
+</Project>

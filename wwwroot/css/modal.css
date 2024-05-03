@@ -1,0 +1,64 @@
+/* Modal Background Overlay */
+.modal-background {
+    display: none; /* Hidden by default */
+    position: fixed; /* Fixed relative to the viewport */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black */
+    z-index: 10000; /* High z-index for proper stacking */
+}
+
+/* Modal Content */
+.modal-content {
+    position: fixed; /* Ensure it stays at the center regardless of scrolling */
+    top: 50%; /* Center vertically */
+    left: 50%; /* Center horizontally */
+    transform: translate(-50%, -50%); /* Proper centering */
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    width: 300px;
+}
+
+/* Close Button */
+.close-modal {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 20px;
+    cursor: pointer; /* Interactive */
+}
+
+/* Form Group Styling */
+.form-group {
+    margin-bottom: 20px;
+}
+
+    .form-group label {
+        display: block; /* Consistent label alignment */
+        text-align: left;
+        font-weight: bold; /* Emphasized label */
+    }
+
+    .form-group input {
+        width: 100%; /* Full-width input */
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+    }
+
+    .form-group button {
+        background-color: #333; /* Dark background */
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer; /* Interactive */
+    }
+
+        .form-group button:hover {
+            background-color: #555; /* Change on hover */
+        }
