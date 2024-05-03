@@ -1,8 +1,8 @@
 using Microsoft.AspNetCore.Mvc;
-using POE_CLVD.Models;
+using KhumaloCraft.Models;
 using System.Diagnostics;
 
-namespace POE_CLVD.Controllers
+namespace KhumaloCraft.Controllers
 {
     public class HomeController : Controller
     {

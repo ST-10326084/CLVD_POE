@@ -1,3 +1,5 @@
+@model List<KhumaloCraft.Models.Product>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,36 +7,38 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Work</title>
     <link rel="stylesheet" href="/css/site.css">
-    <link rel="stylesheet" href="/css/modal.css">
 </head>
 <body>
     <div class="work">
         <h1>My Work</h1>
         <p>This is where the 'art' is stored.</p>
 
-        <div class="work-item">
-            <img src="/images/pottery.jpg" alt="Pottery Pot">
-            <div class="work-item-details">
-                <p class="price"><a href="product1" style="color: #00a82d;">Price: R900</a></p>
-                <p class="description">This blue pot was handcrafted in southern Africa by tribes of the Anglos.</p>
-            </div>
-        </div>
+        <@if (Model == null || !Model.Any())
+        {
+                <p>No products found.</p> <!-- Handle empty or null cases -->
+        }
+        else
+        {
+                <div class="work-items">
+                @foreach (var product in Model)
+                {
+                    if (product == null) // Skip any null entries
+                    {
+                        continue;
+                    }
 
-        <div class="work-item">
-            <img src="/images/wood.jpg" alt="Wooden Sculpture">
-            <div class="work-item-details">
-                <p class="price"><a href="product2" style="color: #00a82d;">Price: R1600</a></p>
-                <p class="description">This wooden sculpture represents the essence of nature, carved by skilled artisans.</p>
-            </div>
-        </div>
-
-        <div class="work-item">
-            <img src="/images/furtniture.jpg" alt="Table">
-            <div class="work-item-details">
-                <p class="price"><a href="product3" style="color: #00a82d;">Price: R3500</a></p>
-                <p class="description">This table was hand carved, oiled and perfectly designed by an artisan.</p>
-            </div>
-        </div>
+                            <div class="work-item">
+                                <img src="@product.ImageUrl" alt="@product.ProductName" />
+                                <div class="work-item-details">
+                                    <p class="price">
+                                        Price: R@product.Price
+                                    </p>
+                                    <p class="description">@product.Description</p>
+                                </div>
+                            </div>
+                }
+                </div>
+        }
     </div>
 </body>
 </html>
