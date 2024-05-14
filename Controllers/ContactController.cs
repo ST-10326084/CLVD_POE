@@ -4,9 +4,9 @@ using System.Threading.Tasks;
 
 public class ContactController : Controller
 {
-    private readonly MyDbContext _context;
+    private readonly Context _context;
 
-    public ContactController(MyDbContext context)
+    public ContactController(Context context)
     {
         _context = context;
     }
@@ -19,7 +19,7 @@ public class ContactController : Controller
             return BadRequest("Invalid form submission.");
         }
 
-        _context.ContactMessages.Add(message); // Add to the DbContext
+        _context.contactMessages.Add(message); // Add to the DbContext
         await _context.SaveChangesAsync(); // Save the data to the database
 
         return Ok("Your message has been submitted successfully."); // Return a success message

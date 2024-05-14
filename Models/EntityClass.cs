@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace KhumaloCraft.Models
 {
@@ -21,7 +22,7 @@ namespace KhumaloCraft.Models
 
     public class ContactMessage
     {
-        public int MessageID { get; set; }
+        [Key] public int MessageID { get; set; }
         public string Name { get; set; }
         public string Email { get; set; }
         public string Message { get; set; }

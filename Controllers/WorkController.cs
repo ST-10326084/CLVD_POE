@@ -5,9 +5,9 @@ using System.Linq;
 
 public class ProductController : Controller
 {
-    private readonly MyDbContext _context;
+    private readonly Context _context;
 
-    public ProductController(MyDbContext context)
+    public ProductController(Context context)
     {
         _context = context;
     }
@@ -15,7 +15,7 @@ public class ProductController : Controller
     public IActionResult MyWork()
     {
         // Fetch all products from the database
-        List<Product> products = _context.Products.ToList();
+        List<Product> products = _context.products.ToList();
 
         if (products == null || !products.Any())
         {
