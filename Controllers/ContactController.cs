@@ -12,14 +12,14 @@ public class ContactController : Controller
     }
 
     [HttpPost]
-    public async Task<IActionResult> SubmitContact([FromForm] ContactMessage message)
+    public async Task<IActionResult> SubmitContact([FromForm] ContactMessage messages)
     {
         if (!ModelState.IsValid) // Validate the model
         {
             return BadRequest("Invalid form submission.");
         }
 
-        _context.contactMessages.Add(message); // Add to the DbContext
+        _context.contactMessages.Add(messages); // Add to the DbContext
         await _context.SaveChangesAsync(); // Save the data to the database
 
         return Ok("Your message has been submitted successfully."); // Return a success message
