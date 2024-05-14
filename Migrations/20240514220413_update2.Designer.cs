@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace POE_CLVD.Migrations
 {
     [DbContext(typeof(Context))]
-    [Migration("20240514101746_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20240514220413_update2")]
+    partial class update2
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -36,7 +36,7 @@ namespace POE_CLVD.Migrations
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("UserEmail")
+                    b.Property<string>("Email")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -61,6 +61,10 @@ namespace POE_CLVD.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ProductID"));
 
+                    b.Property<string>("Category")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Description")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -75,6 +79,9 @@ namespace POE_CLVD.Migrations
                     b.Property<string>("ProductName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Stock")
+                        .HasColumnType("int");
 
                     b.HasKey("ProductID");
 

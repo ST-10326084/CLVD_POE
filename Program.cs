@@ -5,6 +5,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.VisualStudio.Web.CodeGenerators.Mvc.Templates.BlazorIdentity.Pages;
 
 public class Program
 {
@@ -16,7 +17,7 @@ public class Program
         builder.Services.AddControllersWithViews();
 
         builder.Services.AddDbContext<Context>(options =>
-            options.UseSqlServer("Server=tcp:khumalocraft-poe.database.windows.net,1433;Initial Catalog=KhumaloCraft;Persist Security Info=False;User ID=dean;Password=Summ2003@123;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;", sqlServerOptions =>
+            options.UseSqlServer("Server=tcp:khumalocraft-poe.database.windows.net,1433;Initial Catalog=KhumaloCraft;Persist Security Info=False;User ID=dean;PasswordUser=Summ2003@123;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;", sqlServerOptions =>
             {
                 sqlServerOptions.EnableRetryOnFailure();
             }));
@@ -48,6 +49,11 @@ public class Program
             name: "Contact",
             pattern: "Contact/SubmitContact",
             defaults: new { controller = "Contact", action = "SubmitContact" });
+
+        app.MapControllerRoute(
+            name: "Login",
+            pattern: "User/LoginUser",
+            defaults: new { controller = "User", action = "LoginUser" });
 
         app.Run();
     }

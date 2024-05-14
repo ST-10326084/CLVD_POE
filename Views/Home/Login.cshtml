@@ -1,0 +1,27 @@
+﻿@model KhumaloCraft.Models.User
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login</title>
+    <link rel="stylesheet" href="/css/site.css">
+</head>
+<body>
+    <h2>Login</h2>
+    <form asp-controller="User" asp-action="LoginUser" method="post">
+        <div class="form-group">
+            <label for="inputEmail">Email address</label>
+            <input type="email" class="form-control" id="inputEmail" name="email">
+        </div>
+        <div class="form-group">
+            <label for="inputPassword">Password</label>
+            <input type="password" class="form-control" id="inputPassword" name="password">
+        </div>
+        <button type="loginButton" class="btn btn-primary">Login</button>
+    </form>
+</body>
+</html>
+
+@functions{
+   // The PasswordHash field is required. ERROR, somehow the passwordhash field isnt recieving data
+}

@@ -6,9 +6,9 @@ namespace KhumaloCraft.Models;
 
 public class Context : DbContext
 {
-    public DbSet<User> user {  get; set; }
-    public DbSet<Product> products { get; set; }
-    public DbSet<ContactMessage> contactMessages { get; set; }
+    public DbSet<User> Users {  get; set; }
+    public DbSet<Product> Products { get; set; }
+    public DbSet<ContactMessage> ContactMessages { get; set; }
 
     public Context(DbContextOptions options) : base(options) 
     { 

@@ -25,6 +25,15 @@
                                 Price: R @product.Price
                             </p>
                             <p class="description">@product.Description</p>
+                            <p class="category">Category: @product.Category</p>
+                            <p class="availability">Availability: @product.Stock</p>
+                            <form method="post" action="/Home/Purchase">
+
+                                <input type="hidden" name="productId" value="@product.ProductID" />
+                                <label for="quantity">Quantity:</label>
+                                <input type="number" name="quantity" id="quantity" min="1" max="@product.Stock" required />
+                                <button type="submit">Buy</button>
+                            </form>
                         </div>
                     </div>
                 }

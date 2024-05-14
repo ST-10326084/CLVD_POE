@@ -12,7 +12,7 @@ namespace POE_CLVD.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "contactMessages",
+                name: "ContactMessages",
                 columns: table => new
                 {
                     MessageID = table.Column<int>(type: "int", nullable: false)
@@ -28,7 +28,7 @@ namespace POE_CLVD.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "products",
+                name: "Products",
                 columns: table => new
                 {
                     ProductID = table.Column<int>(type: "int", nullable: false)
@@ -44,7 +44,7 @@ namespace POE_CLVD.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "user",
+                name: "Users",
                 columns: table => new
                 {
                     UserID = table.Column<int>(type: "int", nullable: false)
@@ -63,13 +63,13 @@ namespace POE_CLVD.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "contactMessages");
+                name: "ContactMessages");
 
             migrationBuilder.DropTable(
-                name: "products");
+                name: "Products");
 
             migrationBuilder.DropTable(
-                name: "user");
+                name: "Users");
         }
     }
 }

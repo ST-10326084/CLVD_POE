@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace POE_CLVD.Migrations
 {
     [DbContext(typeof(Context))]
-    [Migration("20240514101746_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20240514142356_UpdateProduct")]
+    partial class UpdateProduct
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -61,6 +61,10 @@ namespace POE_CLVD.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ProductID"));
 
+                    b.Property<string>("Category")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Description")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -75,6 +79,9 @@ namespace POE_CLVD.Migrations
                     b.Property<string>("ProductName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Stock")
+                        .HasColumnType("int");
 
                     b.HasKey("ProductID");
 

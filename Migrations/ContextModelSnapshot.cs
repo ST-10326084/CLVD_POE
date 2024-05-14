@@ -47,7 +47,7 @@ namespace POE_CLVD.Migrations
 
                     b.HasKey("MessageID");
 
-                    b.ToTable("contactMessages");
+                    b.ToTable("ContactMessages");
                 });
 
             modelBuilder.Entity("KhumaloCraft.Models.Product", b =>
@@ -57,6 +57,10 @@ namespace POE_CLVD.Migrations
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ProductID"));
+
+                    b.Property<string>("Category")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Description")
                         .IsRequired()
@@ -73,9 +77,12 @@ namespace POE_CLVD.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("Stock")
+                        .HasColumnType("int");
+
                     b.HasKey("ProductID");
 
-                    b.ToTable("products");
+                    b.ToTable("Products");
                 });
 
             modelBuilder.Entity("KhumaloCraft.Models.User", b =>
@@ -89,17 +96,17 @@ namespace POE_CLVD.Migrations
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("Email")
+                    b.Property<string>("PasswordUser")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("PasswordHash")
+                    b.Property<string>("UserEmail")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("UserID");
 
-                    b.ToTable("user");
+                    b.ToTable("Users");
                 });
 #pragma warning restore 612, 618
         }
