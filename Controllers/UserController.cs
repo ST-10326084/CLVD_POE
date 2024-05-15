@@ -1,6 +1,8 @@
-﻿using System.Threading.Tasks;
+﻿using System.Linq;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using KhumaloCraft.Models;
+using Microsoft.EntityFrameworkCore;
 
 public class UserController : Controller
 {
@@ -20,18 +22,23 @@ public class UserController : Controller
     [HttpPost]
     public async Task<IActionResult> LoginUser([FromForm] User user)
     {
-        Console.WriteLine($"UserEmail: {user.UserEmail}, PasswordHash: {user.PasswordHash}");
         if (!ModelState.IsValid)
         {
             var errors = ModelState.Values.SelectMany(v => v.Errors).Select(e => e.ErrorMessage);
             return BadRequest(string.Join(", ", errors));
         }
 
-        _context.Users.Add(user); // Add to the DbContext
-        await _context.SaveChangesAsync(); // Save the data to the database
+        // Check if user exists in the database
+        var existingUser = await _context.Users
+            .FirstOrDefaultAsync(u => u.UserEmail == user.UserEmail && u.PasswordHash == user.PasswordHash);
 
-        return Ok("User logged in successfully."); // Return a success message
+        if (existingUser == null)
+        {
+            return Unauthorized("Invalid email or password.");
+        }
+
+        // Here, you can set up authentication cookies or tokens if needed
+
+        return Ok("User logged in successfully.");
     }
 }
-//  The PasswordHash field is required. ERROR
-

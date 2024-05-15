@@ -5,8 +5,14 @@ namespace KhumaloCraft.Models
     public class User
     {
         public int UserID { get; set; }
-        public required string UserEmail { get; set; }
-        public required string PasswordHash { get; set; }
+
+        [Required]
+        [EmailAddress]
+        public string UserEmail { get; set; }
+
+        [Required]
+        public string PasswordHash { get; set; }
+
         public DateTime CreatedDate { get; set; } = DateTime.Now;
     }
 
