@@ -3,10 +3,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Login</title>
+    <title>Login / Register</title>
     <link rel="stylesheet" href="/css/site.css">
+    <script src="~/js/site.js"></script>
 </head>
 <body>
+    <div id=" loginForm">
     <h2>Login</h2>
     <form asp-controller="User" asp-action="LoginUser" method="post">
         <div class="form-group">
@@ -18,7 +20,11 @@
             <input type="password" class="form-control" id="inputPassword" name="PasswordHash" required>
         </div>
         <button type="submit" class="btn btn-primary">Login</button>
+            <p>Already have an account? <a asp-controller="User" asp-action="Register">Register here</a>.</p>
+
+
     </form>
+    </div>
 </body>
 </html>
 

@@ -55,6 +55,11 @@ public class Program
             pattern: "User/LoginUser",
             defaults: new { controller = "User", action = "LoginUser" });
 
+        app.MapControllerRoute(
+            name: "Register",
+            pattern: "User/RegisterUser",
+            defaults: new { controller = "User", action = "RegisterUser" });
+
         app.Run();
     }
 }
