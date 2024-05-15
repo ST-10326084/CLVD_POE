@@ -31,7 +31,7 @@ namespace KhumaloCraft.Controllers
             var products = _context.Products.ToList(); // Fetch all Products from the database
             return View(products); // Pass the list of Products to the view
         }
-
+       
         public IActionResult Privacy() { return View(); }
 
         public IActionResult ProductDetails(int id)

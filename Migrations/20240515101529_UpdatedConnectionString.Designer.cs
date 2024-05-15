@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace POE_CLVD.Migrations
 {
     [DbContext(typeof(Context))]
-    [Migration("20240514220314_UpdateColumn")]
-    partial class UpdateColumn
+    [Migration("20240515101529_UpdatedConnectionString")]
+    partial class UpdatedConnectionString
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -99,11 +99,11 @@ namespace POE_CLVD.Migrations
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("UserEmail")
+                    b.Property<string>("PasswordHash")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("PasswordUser")
+                    b.Property<string>("UserEmail")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 

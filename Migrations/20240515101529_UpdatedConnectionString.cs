@@ -5,7 +5,7 @@
 namespace POE_CLVD.Migrations
 {
     /// <inheritdoc />
-    public partial class UpdateUserColumns3 : Migration
+    public partial class UpdatedConnectionString : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)

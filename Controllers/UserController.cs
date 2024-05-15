@@ -20,7 +20,7 @@ public class UserController : Controller
     [HttpPost]
     public async Task<IActionResult> LoginUser([FromForm] User user)
     {
-        Console.WriteLine($"UserEmail: {user.UserEmail}, PasswordUser: {user.PasswordUser}");
+        Console.WriteLine($"UserEmail: {user.UserEmail}, PasswordHash: {user.PasswordHash}");
         if (!ModelState.IsValid)
         {
             var errors = ModelState.Values.SelectMany(v => v.Errors).Select(e => e.ErrorMessage);
@@ -33,5 +33,5 @@ public class UserController : Controller
         return Ok("User logged in successfully."); // Return a success message
     }
 }
-//  The PasswordUser field is required. ERROR
+//  The PasswordHash field is required. ERROR
 

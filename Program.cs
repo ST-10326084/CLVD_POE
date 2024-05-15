@@ -17,7 +17,7 @@ public class Program
         builder.Services.AddControllersWithViews();
 
         builder.Services.AddDbContext<Context>(options =>
-            options.UseSqlServer("Server=tcp:khumalocraft-poe.database.windows.net,1433;Initial Catalog=KhumaloCraft;Persist Security Info=False;User ID=dean;PasswordUser=Summ2003@123;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;", sqlServerOptions =>
+            options.UseSqlServer("Server=tcp:khumalocraft-poe.database.windows.net,1433;Initial Catalog=KhumaloCraft;Persist Security Info=False;User ID=dean;Password=Summ2003@123;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;", sqlServerOptions =>
             {
                 sqlServerOptions.EnableRetryOnFailure();
             }));
