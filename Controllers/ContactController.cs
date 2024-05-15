@@ -22,6 +22,6 @@ public class ContactController : Controller
         _context.ContactMessages.Add(messages); // Add to the DbContext
         await _context.SaveChangesAsync(); // Save the data to the database
 
-        return Ok("Your message has been submitted successfully."); // Return a success message
+        return View("Confirmation", new ConfirmationViewModel { Message = "Your message has been submitted successfully.", Success = true });
     }
 }

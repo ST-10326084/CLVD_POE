@@ -34,12 +34,12 @@ public class UserController : Controller
 
         if (existingUser == null)
         {
-            return Unauthorized("Invalid email or password.");
+            return View("Confirmation", new ConfirmationViewModel { Message = "Invalid email or password.", Success = false });
         }
 
         // Here, you can set up authentication cookies or tokens if needed
 
-        return Ok("User logged in successfully.");
+        return View("Confirmation", new ConfirmationViewModel { Message = "User logged in successfully.", Success = true });
     }
 
     [HttpGet]
@@ -61,14 +61,14 @@ public class UserController : Controller
         var existingUser = await _context.Users.FirstOrDefaultAsync(u => u.UserEmail == user.UserEmail);
         if (existingUser != null)
         {
-            return Conflict("User with this email already exists.");
+            return View("Confirmation", new ConfirmationViewModel { Message = "User with this email already exists.", Success = false });
         }
 
         // Add the new user to the database
         _context.Users.Add(user);
         await _context.SaveChangesAsync();
 
-        return Ok("User registered successfully.");
+        return View("Confirmation", new ConfirmationViewModel { Message = "User registered successfully.", Success = true });
     }
 
 }

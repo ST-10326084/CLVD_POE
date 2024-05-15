@@ -1,0 +1,25 @@
+﻿@model KhumaloCraft.Models.ConfirmationViewModel
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Confirmation</title>
+    <link rel="stylesheet" href="/css/site.css">
+</head>
+<body>
+    <h1>@Model.Message</h1>
+    @if (Model.Success)
+    {
+        <a href="~/">Home</a>
+    }
+    else
+    {
+        <a href="#" onclick="goBack()">Go Back</a>
+        <script>
+            function goBack() {
+                history.back(); // Navigate back to the previous page
+            }
+        </script>
+    }
+</body>
+</html>
