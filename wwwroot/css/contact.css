@@ -1,0 +1,79 @@
+﻿body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #ecd9c6;
+    color: #4a4a4a;
+    background-image: url('pattern.jpg');
+    background-size: cover;
+}
+
+h1, h2 {
+    text-align: center;
+    color: #000;
+    margin-bottom: 20px;
+}
+
+p {
+    text-align: justify;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.contact {
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 30px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+}
+
+    .contact h1 {
+        margin-bottom: 20px;
+        color: #333;
+    }
+
+    .contact p {
+        margin-bottom: 20px;
+    }
+
+    .contact form {
+        display: grid;
+        grid-gap: 20px;
+    }
+
+    .contact label {
+        font-weight: bold;
+    }
+
+    .contact input[type="text"],
+    .contact input[type="email"],
+    .contact textarea {
+        width: 100%;
+        padding: 12px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        box-sizing: border-box;
+        font-size: 16px;
+    }
+
+    .contact textarea {
+        resize: vertical;
+    }
+
+    .contact button[type="submit"] {
+        width: 100%;
+        padding: 12px;
+        background-color: #007f24;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 16px;
+        transition: background-color 0.3s ease;
+    }
+
+        .contact button[type="submit"]:hover {
+            background-color: #005d1a;
+        }

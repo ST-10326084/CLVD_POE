@@ -59,57 +59,6 @@ nav {
 
 /* Specific Section Styling */
 
-.contact {
-    max-width: 600px;
-    margin: 0 auto;
-    padding: 30px;
-    background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-    .contact h1 {
-        text-align: center;
-        margin-bottom: 20px;
-    }
-
-    .contact form {
-        display: grid;
-        grid-gap: 20px;
-    }
-
-    .contact label {
-        font-weight: bold;
-    }
-
-    .contact input[type="text"],
-    .contact input[type="email"],
-    .contact textarea {
-        width: 100%;
-        padding: 10px;
-        border: 1px solid #ccc;
-        border-radius: 5px;
-        box-sizing: border-box;
-    }
-
-    .contact textarea {
-        resize: vertical;
-    }
-
-    .contact button[type="submit"] {
-        width: 100%;
-        padding: 10px;
-        background-color: #007f24;
-        color: #fff;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-        transition: background-color 0.3s ease;
-    }
-
-        .contact button[type="submit"]:hover {
-            background-color: #005d1a;
-        }
 
 .work {
     max-width: 800px;
