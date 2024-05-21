@@ -1,27 +1,29 @@
 ﻿/* site.css */
 
-/* General Styling */
+/* Normal (Light) Mode Styles */
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Open Sans', sans-serif; /* Modern font */
     margin: 0;
     padding: 0;
-    background-color: #ecd9c6;
-    color: #4a4a4a;
-    background-image: url(pattern.jpg);
+    background-color: #171717; /* Darkened background */
+    color: #eaeaea; 
+    background-image: url('pattern.jpg');
+    background-size: cover;
 }
 
+/* General Styling */
 .container {
     max-width: 800px;
     margin: 0 auto;
     padding: 20px;
-    background-color: #fff;
+    background-color: #212121; /* Slightly darker container background */
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 h1, h2 {
     text-align: center;
-    color: #000000;
+    color: #eaeaea; /* Light heading text */
     margin-bottom: 20px;
 }
 
@@ -42,29 +44,90 @@ img {
 nav {
     text-align: center;
     margin-top: 20px;
+    color: #eaeaea;
 }
 
     nav a {
         display: inline-block;
         margin: 0 10px;
-        color: #00a82d;
+        color: #eaeaea; /* Darker link color */
         text-decoration: none;
         transition: color 0.3s ease;
         font-size: 18px;
     }
 
         nav a:hover {
-            color: #007f24;
+            color: #5da39c; /* Light link color on hover */
         }
 
 /* Specific Section Styling */
+.contact {
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 30px;
+    background-color: #2e2e2e; /* Darker background color */
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+}
 
+    .contact h1 {
+        margin-bottom: 20px;
+        color: #eaeaea; /* Light heading text color */
+    }
+
+    .contact p {
+        margin-bottom: 20px;
+        color: #cfcfcf; /* Light paragraph text color */
+    }
+
+    .contact form {
+        display: grid;
+        grid-gap: 20px;
+    }
+
+    .contact label {
+        font-weight: bold;
+        color: #eaeaea; /* Light label text color */
+    }
+
+    .contact input[type="text"],
+    .contact input[type="email"],
+    .contact textarea {
+        width: 100%;
+        padding: 12px;
+        border: 1px solid #555; /* Darker border color */
+        border-radius: 5px;
+        box-sizing: border-box;
+        font-size: 16px;
+        color: #cfcfcf; /* Light input text color */
+        background-color: #1e1e1e; /* Darker input background color */
+    }
+
+    .contact textarea {
+        resize: vertical;
+    }
+
+    .contact button[type="submit"] {
+        width: 100%;
+        padding: 12px;
+        background-color: #70c1b3; /* Light button background color */
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 16px;
+        transition: background-color 0.3s ease;
+    }
+
+        .contact button[type="submit"]:hover {
+            background-color: #5da39c; /* Light button background color on hover */
+        }
 
 .work {
     max-width: 800px;
     margin: 0 auto;
     padding: 30px;
-    background-color: #fff;
+    background-color: #292929; /* Darkened section background */
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
@@ -72,12 +135,13 @@ nav {
     .work h1 {
         text-align: center;
         margin-bottom: 20px;
+        color: #eaeaea; /* Light heading text */
     }
 
     .work .work-item {
         display: flex;
         align-items: center;
-        border-bottom: 1px solid #ccc;
+        border-bottom: 1px solid #444; /* Darker border */
         padding-bottom: 20px;
         margin-bottom: 20px;
     }
@@ -99,124 +163,17 @@ nav {
     }
 
     .work .price {
-        color: #00a82d;
+        color: #2ecc71; /* Green price color */
         font-weight: bold;
         cursor: pointer;
         text-decoration: underline;
     }
 
     .work .description {
-        color: #4a4a4a;
+        color: #cfcfcf; /* Light description text */
         margin-top: 5px;
     }
 
     .work .work-item:last-child {
         margin-bottom: 0;
     }
-
-.home {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 30px;
-    background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-    .home h1 {
-        text-align: center;
-        margin-bottom: 20px;
-        color: #007f24; 
-    }
-
-    .home p {
-        text-align: justify;
-        line-height: 1.6;
-        margin-bottom: 20px;
-        color: #4a4a4a; 
-    }
-
-    .home nav {
-        text-align: center;
-        margin-top: 20px;
-    }
-
-        .home nav a {
-            display: inline-block;
-            margin: 0 10px;
-            color: #007f24; 
-            text-decoration: none;
-            font-size: 18px;
-        }
-
-            .home nav a:hover {
-                color: #005d1a; 
-            }
-
-.product {
-    max-width: 600px;
-    margin: 0 auto;
-    padding: 30px;
-    background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-    .product h1 {
-        text-align: center;
-        margin-bottom: 20px;
-        color: #007f24; 
-    }
-
-    .product p {
-        text-align: justify;
-        line-height: 1.6;
-        margin-bottom: 20px;
-        color: #4a4a4a; 
-    }
-
-    .product .price {
-        font-weight: bold;
-        color: #00a82d;
-    }
-
-    .product .details {
-        margin-top: 20px;
-    }
-
-.about {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 30px;
-    background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-    .about h1 {
-        text-align: center;
-        margin-bottom: 20px;
-        color: #007f24; 
-    }
-
-    .about h2 {
-        color: #000;
-        margin-bottom: 10px;
-    }
-
-    .about p {
-        text-align: justify;
-        line-height: 1.6;
-        margin-bottom: 20px;
-        color: #4a4a4a; 
-    }
-
-    .about img {
-        display: block;
-        margin: 0 auto;
-        max-width: 100%;
-        border-radius: 8px;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    }
-
-

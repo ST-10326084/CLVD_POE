@@ -2,15 +2,15 @@
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #ecd9c6;
-    color: #4a4a4a;
+    background-color: #121212; /* Darker background color */
+    color: #cfcfcf; /* Light text color */
     background-image: url('pattern.jpg');
     background-size: cover;
 }
 
 h1, h2 {
     text-align: center;
-    color: #000;
+    color: #eaeaea; /* Light heading text color */
     margin-bottom: 20px;
 }
 
@@ -18,24 +18,26 @@ p {
     text-align: justify;
     line-height: 1.6;
     margin-bottom: 20px;
+    color: #cfcfcf; /* Light paragraph text color */
 }
 
 .contact {
     max-width: 800px;
     margin: 50px auto;
     padding: 30px;
-    background-color: #fff;
+    background-color: #2e2e2e; /* Darker background color */
     border-radius: 10px;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
 }
 
     .contact h1 {
         margin-bottom: 20px;
-        color: #333;
+        color: #eaeaea; /* Light heading text color */
     }
 
     .contact p {
         margin-bottom: 20px;
+        color: #cfcfcf; /* Light paragraph text color */
     }
 
     .contact form {
@@ -45,6 +47,7 @@ p {
 
     .contact label {
         font-weight: bold;
+        color: #eaeaea; /* Light label text color */
     }
 
     .contact input[type="text"],
@@ -52,10 +55,12 @@ p {
     .contact textarea {
         width: 100%;
         padding: 12px;
-        border: 1px solid #ccc;
+        border: 1px solid #555; /* Darker border color */
         border-radius: 5px;
         box-sizing: border-box;
         font-size: 16px;
+        color: #cfcfcf; /* Light input text color */
+        background-color: #1e1e1e; /* Darker input background color */
     }
 
     .contact textarea {
@@ -65,7 +70,7 @@ p {
     .contact button[type="submit"] {
         width: 100%;
         padding: 12px;
-        background-color: #007f24;
+        background-color: #70c1b3; /* Light button background color */
         color: #fff;
         border: none;
         border-radius: 5px;
@@ -75,5 +80,5 @@ p {
     }
 
         .contact button[type="submit"]:hover {
-            background-color: #005d1a;
+            background-color: #5da39c; /* Light button background color on hover */
         }

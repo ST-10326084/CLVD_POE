@@ -7,49 +7,78 @@
 
     <!-- Stylesheets -->
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="/css/modal.css" asp-append-version="true" />
-</head>
-<body>
-    <!-- Navigation bar with the Login link -->
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">KhumaloCraft</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
-                    <ul class="navbar-nav flex-grow-1">
-                        <!-- Left-aligned navigation links -->
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="About">About</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Contact">Contact</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="MyWork">MyWork</a>
-                        </li>
+    <style>
 
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle text-dark" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Account
-                            </a>
-                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                <!-- Trigger the modal to open -->
-                                <a asp-controller="User" asp-action="Login">Login</a>
-                            </div>
-                        </li>
-                    </ul>
+        /* Styles for the navigation bar */
+        .navbar {
+            background-color: #171717; /* Dark background color */
+            color: #cfcfcf; /* Light text color */
+        }      
+
+        .navbar-brand,
+        .navbar-nav .nav-link {
+            color: #ffffff; /* Color for the brand and navigation links */
+        }
+
+            .navbar-nav .nav-link:hover {
+                color: #333333; /* Color for the navigation links on hover */
+            }
+
+        .dropdown-menu {
+            background-color: #121212; /* Background color for dropdown menu */
+        }
+
+            .dropdown-menu .dropdown-item {
+                color: #cfcfcf; /* Color for dropdown menu items */
+            }
+
+                .dropdown-menu .dropdown-item:hover {
+                    background-color: #333333; /* Background color for dropdown menu items on hover */
+                    color: #ffffff; /* Text color for dropdown menu items on hover */
+                }
+
+
+    </style>
+</head>
+<body> 
+        <!-- Navigation bar with the Login link -->
+        <header>
+        <nav class="navbar navbar-expand-sm navbar-white">
+                <div class="container">
+                    <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">KhumaloCraft</a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                            aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav ml-auto">
+                          
+                            <li class="nav-item">
+                                <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" asp-area="" asp-controller="Home" asp-action="About">About</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Contact">Contact</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" asp-area="" asp-controller="Home" asp-action="MyWork">MyWork</a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Account
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" asp-area="" asp-controller="User" asp-action="Login">Login</a>
+                                    <a class="dropdown-item" asp-area="" asp-controller="Home" asp-action="Settings">Settings</a>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
-            </div>
-        </nav>
-    </header>
+            </nav>
+        </header>
 
     <!-- Main content area -->
     <div class="container">

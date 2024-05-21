@@ -24,6 +24,8 @@ namespace KhumaloCraft.Controllers
 
         public IActionResult Contact() { return View(); }
 
+        public IActionResult Settings() { return View(); }
+
         public IActionResult Login() { return View(); }
 
         public IActionResult MyWork()
