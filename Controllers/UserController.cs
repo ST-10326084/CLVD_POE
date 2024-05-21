@@ -3,10 +3,12 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using KhumaloCraft.Models;
 using Microsoft.EntityFrameworkCore;
+using System.Data;
 
 public class UserController : Controller
 {
     private readonly Context _context;
+    private const string EmployeePasscode = "0000"; 
 
     public UserController(Context context)
     {
@@ -49,7 +51,7 @@ public class UserController : Controller
     }
 
     [HttpPost]
-    public async Task<IActionResult> RegisterUser([FromForm] User user)
+    public async Task<IActionResult> RegisterUser([FromForm] User user, [FromForm] string Role, [FromForm] string EmployeePasscode)
     {
         if (!ModelState.IsValid)
         {
@@ -64,11 +66,20 @@ public class UserController : Controller
             return View("Confirmation", new ConfirmationViewModel { Message = "User with this email already exists.", Success = false });
         }
 
+        // Validate role and passcode
+        if (Role == "Employee" && EmployeePasscode != EmployeePasscode)
+        {
+            return View("Confirmation", new ConfirmationViewModel { Message = "Invalid passcode for employee registration.", Success = false });
+        }
+
+        // Set the role
+        user.Role = Role;
+
         // Add the new user to the database
         _context.Users.Add(user);
         await _context.SaveChangesAsync();
 
-        return View("Confirmation", new ConfirmationViewModel { Message = "User registered successfully.", Success = true });
+        return View("Confirmation", new ConfirmationViewModel { Message = "User/Employee registered successfully.", Success = true });
     }
 
 }

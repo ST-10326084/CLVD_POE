@@ -14,6 +14,9 @@ namespace KhumaloCraft.Models
         public string PasswordHash { get; set; }
 
         public DateTime CreatedDate { get; set; } = DateTime.Now;
+
+        [Required]
+        public string Role { get; set; }
     }
 
     public class Product
