@@ -65,15 +65,23 @@
                             <li class="nav-item">
                                 <a class="nav-link" asp-area="" asp-controller="Home" asp-action="MyWork">MyWork</a>
                             </li>
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    Account
-                                </a>
-                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Account
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                @if (User.Identity.IsAuthenticated)
+                                {
+                                    <a class="dropdown-item">@UserManager.GetUserName(User)</a>
+                                    <a class="dropdown-item" asp-area="" asp-controller="User" asp-action="Logout">Logout</a>
+                                }
+                                else
+                                {
                                     <a class="dropdown-item" asp-area="" asp-controller="User" asp-action="Login">Login</a>
-                                    <a class="dropdown-item" asp-area="" asp-controller="Home" asp-action="Settings">Settings</a>
-                                </div>
-                            </li>
+                                    <a class="dropdown-item" asp-area="" asp-controller="User" asp-action="Settings">Settings</a>
+                                }
+                            </div>
+                        </li>
                         </ul>
                     </div>
                 </div>
