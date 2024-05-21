@@ -4,6 +4,9 @@ using Microsoft.AspNetCore.Mvc;
 using KhumaloCraft.Models;
 using Microsoft.EntityFrameworkCore;
 using System.Data;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authorization;
 
 public class UserController : Controller
 {
@@ -80,6 +83,15 @@ public class UserController : Controller
         await _context.SaveChangesAsync();
 
         return View("Confirmation", new ConfirmationViewModel { Message = "User/Employee registered successfully.", Success = true });
+    }
+
+    [HttpGet]
+    [Authorize]
+    public async Task<IActionResult> Logout()
+    {
+        // Sign out the user
+        await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+        return RedirectToAction("Login", "User");
     }
 
 }
