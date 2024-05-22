@@ -4,6 +4,7 @@ using System.Diagnostics;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 
 namespace KhumaloCraft.Controllers
 {
@@ -22,12 +23,14 @@ namespace KhumaloCraft.Controllers
 
         public IActionResult About() { return View(); }
 
+        //[CustomAuthorize("Please log in to access Contact Page.")] i have disabled authorization on contact page so that if there is issues the user can email, and ask for assistance in app
         public IActionResult Contact() { return View(); }
 
         public IActionResult Settings() { return View(); }
 
         public IActionResult Login() { return View(); }
 
+        [CustomAuthorize("Please log in to access My Work Page.")]
         public IActionResult MyWork()
         {
             var products = _context.Products.ToList(); // Fetch all Products from the database

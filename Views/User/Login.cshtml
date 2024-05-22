@@ -3,30 +3,38 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Login / Register</title>
+    <title>Login</title>
     <link rel="stylesheet" href="/css/site.css">
-    <script src="~/js/site.js"></script>
+    <script>
+        function togglePasscodeField() {
+            var enableDefaultCode = document.getElementById('enableDefaultCode').checked;
+            var passcodeField = document.getElementById('passcodeField');
+            passcodeField.style.display = enableDefaultCode ? 'none' : 'block';
+        }
+    </script>
 </head>
 <body>
-    <div id=" loginForm">
-    <h2>Login</h2>
-    <form asp-controller="User" asp-action="LoginUser" method="post">
-        <div class="form-group">
-            <label for="inputEmail">Email address</label>
-            <input type="email" class="form-control" id="inputEmail" name="UserEmail" required>
-        </div>
-        <div class="form-group">
-            <label for="inputPassword">Password</label>
-            <input type="password" class="form-control" id="inputPassword" name="PasswordHash" required>
-        </div>
-        <div class="form-group">
-                <input type="hidden" name="Role" value="User">
-        </div>
-        <button type="submit" class="btn btn-primary">Login</button>
+    <div id="loginForm">
+        <h2>Login</h2>
+        @if (Context.Request.Query.ContainsKey("message"))
+        {
+            <div class="alert alert-warning">
+                @Context.Request.Query["message"]
+            </div>
+        }
+        <form asp-controller="User" asp-action="LoginUser" method="post">
+            <div class="form-group">
+                <label for="inputEmail">Email address</label>
+                <input type="email" class="form-control" id="inputEmail" name="UserEmail" required>
+            </div>
+            <div class="form-group">
+                <label for="inputPassword">Password</label>
+                <input type="password" class="form-control" id="inputPassword" name="PasswordHash" required>
+            </div>
+            <input type="hidden" name="Role" value="User">
+            <button type="submit" class="btn btn-primary">Login</button>
             <p>Already have an account? <a asp-controller="User" asp-action="Register">Register here</a>.</p>
-
-
-    </form>
+        </form>
     </div>
 </body>
 </html>

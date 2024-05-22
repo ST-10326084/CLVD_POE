@@ -29,8 +29,9 @@ public class Program
         app.UseHttpsRedirection();
         app.UseStaticFiles();
         app.UseRouting();
-        app.UseAuthentication(); // Add this line to enable authentication
+        app.UseAuthentication(); 
         app.UseAuthorization();
+        
 
         app.MapControllerRoute(
             name: "default",

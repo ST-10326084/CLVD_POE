@@ -16,7 +16,7 @@ namespace KhumaloCraft.Models
         public DateTime CreatedDate { get; set; } = DateTime.Now;
 
         [Required]
-        public string Role { get; set; }
+        public string Role { get; set; } // must still be required, but will be updated and changed in the settings.cshtml instead of the login or register. default must be User
     }
 
     public class Product

@@ -1,25 +1,38 @@
-﻿<!DOCTYPE html>
-<html lang="en">
+﻿@model KhumaloCraft.Models.UserViewModel
+
+<!DOCTYPE html>
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Settings</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="/css/site.css">
 </head>
 <body>
     <div class="container">
-        <h1>Settings</h1>
-        <div class="form-group">
-            <label for="darkModeToggle">Dark Mode:</label>
-            <label for="darkModeToggle">OUT OF ORDER:</label>
-            <button id="darkModeToggle" class="btn">Toggle Dark Mode</button>
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <h2 class="text-center">Settings</h2>
+                <form asp-controller="User" asp-action="Settings" method="get">
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="text" class="form-control" id="email" value="@Model?.Email" readonly>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="role">Role</label>
+                        <input type="text" class="form-control" id="role" value="@Model?.Role" readonly>
+                    </div>                 
+                </form>
+
+                <form asp-controller="User" asp-action="ChangeRole" method="post">
+                    <div class="form-group">
+                        <label for="inputCode">Employee Passcode</label>
+                        <input type="text" class="form-control" id="inputCode" name="Passcode" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block">Submit</button>
+                </form>
+            </div>
         </div>
     </div>
-    <script>
-        // JavaScript to handle the dark mode toggle
-        document.getElementById('darkModeToggle').addEventListener('click', function () {
-            document.body.classList.toggle('dark-mode');
-        });
-    </script>
 </body>
 </html>
