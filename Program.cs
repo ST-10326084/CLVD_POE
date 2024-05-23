@@ -7,6 +7,10 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using System;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
+
 
 public class Program
 {
@@ -29,9 +33,11 @@ public class Program
         app.UseHttpsRedirection();
         app.UseStaticFiles();
         app.UseRouting();
+
         app.UseAuthentication(); 
         app.UseAuthorization();
-        
+
+        app.UseSession();
 
         app.MapControllerRoute(
             name: "default",
@@ -67,5 +73,16 @@ public class Program
                 options.AccessDeniedPath = "/Home/AccessDenied"; // Customize the access denied path as needed
                 options.ExpireTimeSpan = TimeSpan.FromMinutes(30); // Set the expiration time for the authentication cookie
             });
+
+        // Add session services
+        services.AddSession(options =>
+        {
+            options.IdleTimeout = TimeSpan.FromMinutes(30); // Set the session timeout
+            options.Cookie.HttpOnly = true;
+            options.Cookie.IsEssential = true;
+        });
+
+        // Add distributed memory cache services
+        services.AddDistributedMemoryCache();
     }
 }

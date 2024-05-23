@@ -27,12 +27,11 @@
                             <p class="description">@product.Description</p>
                             <p class="category">Category: @product.Category</p>
                             <p class="availability">Availability: @product.Stock</p>
-                            <form method="post" action="/Home/Purchase">
-
+                            <form method="post" action="/Home/AddToCart">
                                 <input type="hidden" name="productId" value="@product.ProductID" />
                                 <label for="quantity">Quantity:</label>
                                 <input type="number" name="quantity" id="quantity" min="1" max="@product.Stock" required />
-                                <button type="submit">Buy</button>
+                                <button type="submit">Add to Cart</button>
                             </form>
                         </div>
                     </div>
@@ -43,6 +42,7 @@
                 <p>No products found.</p>
             }
         </div>
+        <a href="/Home/ViewCart">View Cart</a>
     </div>
 </body>
 </html>

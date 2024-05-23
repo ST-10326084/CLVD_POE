@@ -5,6 +5,7 @@ using Microsoft.EntityFrameworkCore;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
+using Newtonsoft.Json;
 
 namespace KhumaloCraft.Controllers
 {
@@ -117,5 +118,86 @@ namespace KhumaloCraft.Controllers
             }
         }
 
+        [HttpPost]
+        public IActionResult AddToCart(int productId, int quantity)
+        {
+            var product = _context.Products.FirstOrDefault(p => p.ProductID == productId);
+            if (product == null)
+            {
+                return NotFound("Product not found.");
+            }
+
+            var cart = GetCart();
+            var cartItem = cart.FirstOrDefault(item => item.ProductID == productId);
+
+            if (cartItem == null)
+            {
+                cart.Add(new ShoppingCartItem
+                {
+                    ProductID = product.ProductID,
+                    ProductName = product.ProductName,
+                    Price = product.Price,
+                    Quantity = quantity
+                });
+            }
+            else
+            {
+                cartItem.Quantity += quantity;
+            }
+
+            SaveCart(cart);
+
+            return RedirectToAction("MyWork");
+        }
+
+        public IActionResult ViewCart()
+        {
+            var cart = GetCart();
+            return View(cart);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Checkout()
+        {
+            var cart = GetCart();
+            foreach (var cartItem in cart)
+            {
+                var product = await _context.Products.FindAsync(cartItem.ProductID);
+                if (product == null || product.Stock < cartItem.Quantity)
+                {
+                    return BadRequest("Not enough stock available for product: " + cartItem.ProductName);
+                }
+
+                product.Stock -= cartItem.Quantity;
+            }
+
+            try
+            {
+                await _context.SaveChangesAsync();
+                ClearCart();
+                return RedirectToAction("MyWork");
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"An error occurred: {ex.Message}");
+            }
+        }
+
+        private List<ShoppingCartItem> GetCart()
+        {
+            var cart = HttpContext.Session.GetString("Cart");
+            return cart == null ? new List<ShoppingCartItem>() : JsonConvert.DeserializeObject<List<ShoppingCartItem>>(cart);
+        }
+
+        private void SaveCart(List<ShoppingCartItem> cart)
+        {
+            HttpContext.Session.SetString("Cart", JsonConvert.SerializeObject(cart));
+        }
+
+        private void ClearCart()
+        {
+            HttpContext.Session.Remove("Cart");
+        }
     }
 }
+

@@ -1,0 +1,39 @@
+﻿@model List<ShoppingCartItem>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Cart</title>
+    <link rel="stylesheet" href="/css/site.css">
+</head>
+<body>
+    <div class="cart">
+        <h1>Shopping Cart</h1>
+        <div class="cart-items">
+            @if (Model != null && Model.Any())
+            {
+                foreach (var item in Model)
+                {
+                    <div class="cart-item">
+                        <h2>@item.ProductName</h2>
+                        <p>Price: R @item.Price</p>
+                        <p>Quantity: @item.Quantity</p>
+                    </div>
+                }
+            }
+            else
+            {
+                <p>Your cart is empty.</p>
+            }
+        </div>
+        @if (Model != null && Model.Any())
+        {
+            <form method="post" action="/Home/Checkout">
+                <button type="submit">Checkout</button>
+            </form>
+        }
+    </div>
+</body>
+</html>
