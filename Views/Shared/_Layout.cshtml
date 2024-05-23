@@ -8,12 +8,11 @@
     <!-- Stylesheets -->
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <style>
-
         /* Styles for the navigation bar */
         .navbar {
             background-color: #171717; /* Dark background color */
             color: #cfcfcf; /* Light text color */
-        }      
+        }
 
         .navbar-brand,
         .navbar-nav .nav-link {
@@ -37,7 +36,9 @@
                     color: #ffffff; /* Text color for dropdown menu items on hover */
                 }
 
-
+        .navbar-toggler-icon {
+            background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba%28255, 255, 255, 0.5%29' stroke-width='2' linecap='round' linejoin='round' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+        }
     </style>
 </head>
 <body> 
@@ -73,6 +74,13 @@
                                 {
                                     <a class="dropdown-item" asp-area="" asp-controller="Home" asp-action="Settings">Settings</a>
                                     <a class="dropdown-item" asp-area="" asp-controller="User" asp-action="Logout">Logout</a>
+                                    <a class="dropdown-item" asp-area="" asp-controller="Home" asp-action="ManageStock">Stock</a>
+                                    @if (User.IsInRole("Employee"))
+                                    {
+                                       // <li><a href="/Home/ManageStock">Manage Stock</a></li>
+                                        <a class="dropdown-item" asp-area="" asp-controller="Home" asp-action="ManageStock">Stock</a>
+                                    }
+
                                 }
                                 else
                                 {

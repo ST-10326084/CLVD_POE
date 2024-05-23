@@ -1,0 +1,42 @@
+﻿@model List<KhumaloCraft.Models.Product>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Stock</title>
+    <link rel="stylesheet" href="/css/site.css">
+</head>
+<body>
+    <div class="manage-stock">
+        <h1>Manage Stock</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>Product</th>
+                    <th>Current Stock</th>
+                    <th>New Stock</th>
+                    <th>Update</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var product in Model)
+                {
+                    <tr>
+                        <td>@product.ProductName</td>
+                        <td>@product.Stock</td>
+                        <td>
+                            <form method="post" action="/Home/UpdateStock">
+                                <input type="hidden" name="productId" value="@product.ProductID" />
+                                <input type="number" name="newStock" min="1" required />
+                                <button type="submit">Update</button>
+                            </form>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

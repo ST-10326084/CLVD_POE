@@ -21,7 +21,7 @@
     },
     "resourceName": {
       "type": "string",
-      "defaultValue": "CLVDPOEPART2",
+      "defaultValue": "POE-CLVD",
       "metadata": {
         "description": "Name of the main resource to be created by this template."
       }

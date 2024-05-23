@@ -9,7 +9,6 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Security.Claims;
 
-
 public class UserController : Controller
 {
     private readonly Context _context;
@@ -63,6 +62,12 @@ public class UserController : Controller
 
         await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(claimsIdentity), authProperties);
 
+        var userClaims = User.Claims;
+        foreach (var claim in userClaims)
+        {
+            Console.WriteLine($"Claim Type: {claim.Type}, Claim Value: {claim.Value}");
+        }
+
         return View("Confirmation", new ConfirmationViewModel { Message = "User logged in successfully.", Success = true });
     }
 
@@ -103,43 +108,23 @@ public class UserController : Controller
     [HttpPost]
     public async Task<IActionResult> ChangeRole([FromForm] string Passcode)
     {
-        // Check if the entered code matches the predefined employee passcode
+        var userEmail = User.Identity.Name;
+        var user = await _context.Users.FirstOrDefaultAsync(u => u.UserEmail == userEmail);
+
+        if (user == null)
+        {
+            return View("Confirmation", new ConfirmationViewModel { Message = "User not found.", Success = false });
+        }
+
         if (Passcode == EmployeePasscode)
         {
-            // Get the current user
-            var userEmail = User.Identity.Name;
-            var user = await _context.Users.FirstOrDefaultAsync(u => u.UserEmail == userEmail);
+            user.Role = user.Role == "Employee" ? "User" : "Employee";
+            await _context.SaveChangesAsync();
+            return View("Confirmation", new ConfirmationViewModel { Message = $"Role updated successfully. User is now a {user.Role}.", Success = true });
+        }
 
-            if (user != null)
-            {
-                // Check if the user is currently an employee
-                if (user.Role == "Employee")
-                {
-                    // Update the user's role to "User"
-                    user.Role = "User";
-                    await _context.SaveChangesAsync();
-                    return View("Confirmation", new ConfirmationViewModel { Message = "Role updated successfully. User is now a regular user.", Success = true });
-                }
-                else
-                {
-                    user.Role = "Employee";
-                    await _context.SaveChangesAsync();
-                    return View("Confirmation", new ConfirmationViewModel { Message = "Role updated successfully.", Success = true });
-                }
-            }
-            else
-            {
-                return View("Confirmation", new ConfirmationViewModel { Message = "User not found.", Success = false });
-            }
-        }
-        else
-        {
-            return View("Confirmation", new ConfirmationViewModel { Message = "Invalid passcode.", Success = false });
-        }
+        return View("Confirmation", new ConfirmationViewModel { Message = "Invalid passcode.", Success = false });
     }
-
-
-
 
     [HttpGet]
     [Authorize]
@@ -151,19 +136,21 @@ public class UserController : Controller
 
     [HttpGet]
     [Authorize]
-    public IActionResult Settings()
+    public async Task<IActionResult> Settings()
     {
         var userEmail = User.Identity.Name;
-        var userRole = User.FindFirstValue(ClaimTypes.Role);
+        var user = await _context.Users.FirstOrDefaultAsync(u => u.UserEmail == userEmail);
 
-        // You can create a view model to hold email and role
-        var viewModel = new UserViewModel { Email = userEmail, Role = userRole };
+        if (user == null)
+        {
+            return RedirectToAction("Error", "Home");
+        }
 
-        // Pass the view model to the view
+        var viewModel = new UserViewModel
+        {
+            Email = user?.UserEmail, // Use null-conditional operator to handle potential null user
+            Role = User.Identity.Name // Assuming Role is stored in claims
+        };
         return View(viewModel);
     }
-
-
-
-
 }

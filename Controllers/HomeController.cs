@@ -86,5 +86,36 @@ namespace KhumaloCraft.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
+
+       // [Authorize(Roles = "Employee")]
+        public IActionResult ManageStock()
+        {
+            var products = _context.Products.ToList();
+            return View(products);
+        }
+
+        [HttpPost]
+        //[Authorize(Roles = "Employee")]
+        public async Task<IActionResult> UpdateStock(int productId, int newStock)
+        {
+            var product = await _context.Products.FindAsync(productId);
+            if (product == null)
+            {
+                return NotFound("Product not found.");
+            }
+
+            product.Stock = newStock;
+
+            try
+            {
+                await _context.SaveChangesAsync();
+                return RedirectToAction("ManageStock");
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"An error occurred: {ex.Message}");
+            }
+        }
+
     }
 }
