@@ -88,7 +88,7 @@ namespace KhumaloCraft.Controllers
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
 
-       // [Authorize(Roles = "Employee")]
+        [Authorize(Roles = "Employee")]
         public IActionResult ManageStock()
         {
             var products = _context.Products.ToList();
@@ -96,8 +96,8 @@ namespace KhumaloCraft.Controllers
         }
 
         [HttpPost]
-        //[Authorize(Roles = "Employee")]
-        public async Task<IActionResult> UpdateStock(int productId, int newStock)
+        [Authorize(Roles = "Employee")]
+        public async Task<IActionResult> UpdateStock(int productId, int newStock) // apply employee authorization
         {
             var product = await _context.Products.FindAsync(productId);
             if (product == null)
@@ -119,7 +119,7 @@ namespace KhumaloCraft.Controllers
         }
 
         [HttpPost]
-        public IActionResult AddToCart(int productId, int quantity)
+        public IActionResult AddToCart(int productId, int quantity)  // add confirmation to items added to cart
         {
             var product = _context.Products.FirstOrDefault(p => p.ProductID == productId);
             if (product == null)
@@ -157,7 +157,7 @@ namespace KhumaloCraft.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Checkout()
+        public async Task<IActionResult> Checkout() // add confirmation to items purchased
         {
             var cart = GetCart();
             foreach (var cartItem in cart)

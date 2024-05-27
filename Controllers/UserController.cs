@@ -12,7 +12,8 @@ using System.Security.Claims;
 public class UserController : Controller
 {
     private readonly Context _context;
-    private const string EmployeePasscode = "0000";
+    private const string EmployeePasscode = "0000"; // for accessing the employee role
+    
 
     public UserController(Context context)
     {
@@ -53,11 +54,11 @@ public class UserController : Controller
         var authProperties = new AuthenticationProperties
         {
             // Allow refreshing the authentication session
-            AllowRefresh = true,
+            AllowRefresh = false,
             // Expire time for the authentication ticket
             ExpiresUtc = DateTimeOffset.UtcNow.AddMinutes(30),
             // Is persistent
-            IsPersistent = true
+            IsPersistent = false
         };
 
         await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(claimsIdentity), authProperties);
@@ -110,6 +111,7 @@ public class UserController : Controller
     {
         var userEmail = User.Identity.Name;
         var user = await _context.Users.FirstOrDefaultAsync(u => u.UserEmail == userEmail);
+        
 
         if (user == null)
         {
@@ -120,6 +122,10 @@ public class UserController : Controller
         {
             user.Role = user.Role == "Employee" ? "User" : "Employee";
             await _context.SaveChangesAsync();
+
+            // Set the role change status in TempData
+            TempData["RoleChanged"] = 1;
+
             return View("Confirmation", new ConfirmationViewModel { Message = $"Role updated successfully. User is now a {user.Role}.", Success = true });
         }
 
