@@ -157,9 +157,11 @@ namespace KhumaloCraft.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Checkout() // add confirmation to items purchased
+        public async Task<IActionResult> Checkout()
         {
             var cart = GetCart();
+            var purchasedItems = new List<PurchasedItem>();
+
             foreach (var cartItem in cart)
             {
                 var product = await _context.Products.FindAsync(cartItem.ProductID);
@@ -169,19 +171,39 @@ namespace KhumaloCraft.Controllers
                 }
 
                 product.Stock -= cartItem.Quantity;
+
+                // Add the purchased item to the list
+                purchasedItems.Add(new PurchasedItem
+                {
+                    ProductID = product.ProductID,
+                    Quantity = cartItem.Quantity
+                });
             }
 
             try
             {
+                // Save changes to product stock
                 await _context.SaveChangesAsync();
+
+                // Save purchased items to the database
+                await _context.PurchasedItems.AddRangeAsync(purchasedItems);
+                await _context.SaveChangesAsync();
+
+                // Clear the cart
                 ClearCart();
+
+                // Provide confirmation message
+                TempData["Message"] = "Items purchased successfully.";
+
                 return RedirectToAction("MyWork");
             }
             catch (Exception ex)
             {
-                return StatusCode(500, $"An error occurred: {ex.Message}");
+                return StatusCode(500, $"An error occurred: {ex.Message}"); // saving cart gives me an error
             }
         }
+
+
 
         private List<ShoppingCartItem> GetCart()
         {

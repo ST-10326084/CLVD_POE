@@ -28,6 +28,8 @@ namespace KhumaloCraft.Models
         public string ImageUrl { get; set; }
         public string Category { get; set; } 
         public int Stock { get; set; } 
+
+        
     }
 
     public class ContactMessage
@@ -37,5 +39,15 @@ namespace KhumaloCraft.Models
         public string Email { get; set; }
         public string Message { get; set; }
         public DateTime CreatedDate { get; set; } = DateTime.Now;
+    }
+
+    public class PurchasedItem
+    {
+        public int ID { get; set; }
+        public int ProductID { get; set; }
+        public int Quantity { get; set; }
+
+        // Navigation property to the Product entity
+        public Product Product { get; set; }
     }
 }

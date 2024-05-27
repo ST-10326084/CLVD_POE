@@ -10,6 +10,8 @@ public class Context : DbContext
     public DbSet<Product> Products { get; set; }
     public DbSet<ContactMessage> ContactMessages { get; set; }
 
+    public DbSet<PurchasedItem> PurchasedItems { get; set; }
+
     public Context(DbContextOptions<Context> options) : base(options) 
     { 
 
