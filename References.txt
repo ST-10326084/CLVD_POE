@@ -1,0 +1,18 @@
+C, tutorialsEU (2023). CREATE and CONNECT DATABASES in ASP.NET. YouTube. Available at: https://www.youtube.com/watch?v=ZX12X-ALwGA [Accessed 17 May 2024].
+
+‌Code, B. (2023). How to create a CSS navigation bar in 6 minutes! 🧭. YouTube. Available at: https://www.youtube.com/watch?v=f3uCSh6LIY0 [Accessed 18 May 2024].
+
+‌GreatStack (2022). How To Create Login & Registration Form Using HTML CSS And JavaScript. YouTube. Available at: https://www.youtube.com/watch?v=LTPGyaEyTI4&t=293s [Accessed 10 May 2024].
+
+‌Slaying The Dragon (2022). Learn Flexbox CSS in 8 minutes. YouTube. Available at: https://www.youtube.com/watch?v=phWxA89Dy94 [Accessed 14 May 2024].
+
+‌O’Didily, M. (2023). How to Get User Input From a Textbox and Validate It Using C# (Simple). YouTube. Available at: https://www.youtube.com/watch?v=6uRvS4eavWI&t=13s [Accessed 20 May 2024].
+
+‌company, F. (2021). User roles and permissions: concept. YouTube. Available at: https://www.youtube.com/watch?v=iUNur_DDRmE&t=452s [Accessed 17 May 2024].
+
+‌Fireship (2021). MySQL - The Basics // Learn SQL in 23 Easy Steps. YouTube. Available at: https://www.youtube.com/watch?v=Cz3WcZLRaWc [Accessed 19 May 2024].
+
+ghogen (2023). Work with data in Visual Studio - Visual Studio (Windows). [online] Microsoft.com. Available at: https://learn.microsoft.com/en-us/visualstudio/data-tools/accessing-data-in-visual-studio?view=vs-2022 [Accessed 27 May 2024].
+
+‌
+‌
