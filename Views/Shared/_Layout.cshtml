@@ -74,16 +74,11 @@
                                 {
                                     <a class="dropdown-item" asp-area="" asp-controller="Home" asp-action="Settings">Settings</a>
                                     <a class="dropdown-item" asp-area="" asp-controller="User" asp-action="Logout">Logout</a>
+
+                                    // only want employees to see this
                                     <a class="dropdown-item" asp-area="" asp-controller="Home" asp-action="ManageStock">Stock</a> // will be role auth for part 3
                                     
-                                    /*
-                                    @if (TempData["RoleChanged"] != null && (int)TempData["RoleChanged"] == 1) // will fix role auth for part 3
-                                    {
-                                        <div class="alert alert-success" role="alert">
-                                            Role changed successfully!
-                                            <a class="dropdown-item" asp-area="" asp-controller="Home" asp-action="ManageStock">Stock</a>
-                                        </div>
-                                    } */
+                                  
                                 }
                                 else
                                 {

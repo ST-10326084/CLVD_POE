@@ -89,6 +89,7 @@ namespace KhumaloCraft.Controllers
         }
 
         //[Authorize(Roles = "Employee")] will fix this for part 3
+        [Authorize(Roles = "Employee")]
         public IActionResult ManageStock()
         {
             var products = _context.Products.ToList();
@@ -192,14 +193,12 @@ namespace KhumaloCraft.Controllers
                 // Clear the cart
                 ClearCart();
 
-                // Provide confirmation message
-                TempData["Message"] = "Items purchased successfully.";
-
-                return RedirectToAction("MyWork");
+                
+                return View("Confirmation", new ConfirmationViewModel { Message = "Items purchased successfully.", Success = true });               
             }
             catch (Exception ex)
             {
-                return StatusCode(500, $"An error occurred: {ex.Message}"); // saving cart gives me an error
+                return View("Confirmation", new ConfirmationViewModel { Message = $"An error occurred: {ex.Message}", Success = false });
             }
         }
 
@@ -220,6 +219,17 @@ namespace KhumaloCraft.Controllers
         {
             HttpContext.Session.Remove("Cart");
         }
+
+        public async Task<IActionResult> PreviousOrders()
+        {
+            // Retrieve previous orders from the database
+            var orders = await _context.PurchasedItems
+                .Include(p => p.Product)
+                .ToListAsync();
+
+            return View(orders);
+        }
+
     }
 }
 

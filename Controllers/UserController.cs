@@ -121,7 +121,7 @@ public class UserController : Controller
         if (Passcode == EmployeePasscode)
         {
             user.Role = user.Role == "Employee" ? "User" : "Employee";
-            await _context.SaveChangesAsync();
+            await _context.SaveChangesAsync();           
 
             // Set the role change status in TempData
             TempData["RoleChanged"] = 1;

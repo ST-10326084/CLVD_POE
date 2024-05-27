@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.AspNetCore.Identity;
+using System.ComponentModel.DataAnnotations;
 
 namespace KhumaloCraft.Models
 {
@@ -16,7 +17,7 @@ namespace KhumaloCraft.Models
         public DateTime CreatedDate { get; set; } = DateTime.Now;
 
         [Required]
-        public string Role { get; set; } 
+        public string Role { get; set; } //this is where the role is stored
     }
 
     public class Product
@@ -29,7 +30,6 @@ namespace KhumaloCraft.Models
         public string Category { get; set; } 
         public int Stock { get; set; } 
 
-        
     }
 
     public class ContactMessage
