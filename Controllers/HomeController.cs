@@ -88,7 +88,7 @@ namespace KhumaloCraft.Controllers
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
 
-        [Authorize(Roles = "Employee")]
+        //[Authorize(Roles = "Employee")] will fix this for part 3
         public IActionResult ManageStock()
         {
             var products = _context.Products.ToList();
@@ -96,8 +96,8 @@ namespace KhumaloCraft.Controllers
         }
 
         [HttpPost]
-        [Authorize(Roles = "Employee")]
-        public async Task<IActionResult> UpdateStock(int productId, int newStock) // apply employee authorization
+        //[Authorize(Roles = "Employee")] will fix for part 3
+        public async Task<IActionResult> UpdateStock(int productId, int newStock) 
         {
             var product = await _context.Products.FindAsync(productId);
             if (product == null)

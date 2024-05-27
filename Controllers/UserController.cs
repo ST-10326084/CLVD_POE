@@ -54,11 +54,11 @@ public class UserController : Controller
         var authProperties = new AuthenticationProperties
         {
             // Allow refreshing the authentication session
-            AllowRefresh = false,
+            AllowRefresh = true,
             // Expire time for the authentication ticket
             ExpiresUtc = DateTimeOffset.UtcNow.AddMinutes(30),
             // Is persistent
-            IsPersistent = false
+            IsPersistent = true
         };
 
         await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(claimsIdentity), authProperties);
