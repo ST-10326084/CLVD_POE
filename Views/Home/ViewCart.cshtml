@@ -34,7 +34,13 @@
                 <button type="submit">Checkout</button>
             </form>
         }
-        <a href="/Home/PreviousOrders">View Previous Orders</a>
+        <a class="nav-link" asp-area="" asp-controller="User" asp-action="PreviousOrders">Previous Orders</a>
+
     </div>
 </body>
 </html>
+
+                        @functions{
+   // <a href="/Home/PreviousOrders">View Previous Orders</a>
+  //  <a class="nav-link" asp-area="" asp-controller="Home" asp-action="PreviousOrders">Previous Orders</a>
+                        }

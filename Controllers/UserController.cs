@@ -159,4 +159,15 @@ public class UserController : Controller
         };
         return View(viewModel);
     }
+
+    //[HttpGet]
+    public async Task<IActionResult> PreviousOrders()
+    {
+        // Retrieve previous orders from the database
+        var orders = await _context.PurchasedItems
+            .Include(p => p.Product)
+            .ToListAsync();
+
+        return View(orders);
+    }
 }

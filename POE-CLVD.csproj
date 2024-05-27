@@ -31,7 +31,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="Views\Home\PreviousOrders.cshtml" />
+    <None Include="Views\User\PreviousOrders.cshtml" />
   </ItemGroup>
 
 

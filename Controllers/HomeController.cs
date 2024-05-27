@@ -220,15 +220,7 @@ namespace KhumaloCraft.Controllers
             HttpContext.Session.Remove("Cart");
         }
 
-        public async Task<IActionResult> PreviousOrders()
-        {
-            // Retrieve previous orders from the database
-            var orders = await _context.PurchasedItems
-                .Include(p => p.Product)
-                .ToListAsync();
-
-            return View(orders);
-        }
+        
 
     }
 }
